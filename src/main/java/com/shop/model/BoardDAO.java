@@ -167,12 +167,12 @@ public class BoardDAO {
 		return cnt;
 	}
 	
-	public int delBoard(BoardVO vo) {
+	public int delBoard(int num) {
 		try {
 			conn = JDBCConnection.getConnection();
 			sql = "delete from board where no=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getNo());
+			pstmt.setInt(1, num);
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");

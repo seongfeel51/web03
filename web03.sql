@@ -13,8 +13,12 @@ select * from board where seq=?;
 insert into board values((select nvl(max(seq), 0)+1 from board), ?, ?, ?, sysdate, 0);
 
 
+create table member( id varchar(20) primary key,
+pw varchar(20) not null,
+m_name varchar(20) not null,
+phone varchar(13),
+email varchar(30));
 
-
-
+insert into member values('admin', '1234', '관리자', '010-1111-1111', 'admin@naver.com');
 
 commit;

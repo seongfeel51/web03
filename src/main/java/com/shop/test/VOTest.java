@@ -16,7 +16,7 @@ class VOTest {
 
 	private BoardVO board;
 	private MemberVO member;
-	private String data1 = "여기는 제목";
+	private String data1 = "제목1";
 	private String data2 = "admin"; 
 	
 	@BeforeAll
@@ -43,7 +43,7 @@ class VOTest {
 
 	@Test
 	void VOtest1() {
-		board.setTitle("여기는 제목");
+		board.setTitle("제목1");
 		System.out.println("데이터 : "+board.getTitle());
 		assertEquals(data1, board.getTitle());
 		fail("VOTest1 False");
