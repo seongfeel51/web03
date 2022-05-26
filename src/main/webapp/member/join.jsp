@@ -55,6 +55,15 @@
 						</td>
 					</tr>
 					<tr>
+<<<<<<< HEAD
+=======
+						<th>이름*</th>
+						<td>
+							<input type="text" name="name" required>
+						</td>
+					</tr>
+					<tr>
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 						<th>이메일*</th>
 						<td>
 							<input type="email" name="email" required>
@@ -67,6 +76,7 @@
 						</td>
 					</tr>
 					<tr>
+<<<<<<< HEAD
 						<th>주소</th>
 						<td>
 							<input type="text" name="addr1" id="addr1"><br>
@@ -82,6 +92,8 @@
 						</td>
 					</tr>
 					<tr>
+=======
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 						<td colspan="2">
 							<input type="submit" value="가입" class="button is-info"/>
 							<input type="reset" value="취소" class="button is-info"/>

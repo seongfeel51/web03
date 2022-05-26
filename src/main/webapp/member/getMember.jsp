@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+=======
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 <c:set var="path1" value="${pageContext.request.contextPath }" /> 
 <!DOCTYPE html>
 <html>
@@ -23,13 +26,27 @@
 					<tr>
 						<th>아이디</th>
 						<td>
+<<<<<<< HEAD
 							<input type="text" name="userid" value="${member.userid }" readonly>
+=======
+							<input type="text" name="userid" value="${member.id }" readonly>
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
 						<td>
+<<<<<<< HEAD
 							<input type="text" name="userpw" value="${member.userpw }">
+=======
+							<input type="text" name="userpw" value="${member.pw }">
+						</td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input type="text" name="name" value="${member.m_name }">
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 						</td>
 					</tr>
 					<tr>
@@ -45,6 +62,7 @@
 						</td>
 					</tr>
 					<tr>
+<<<<<<< HEAD
 						<th>주소</th>
 						<td>
 							<input type="text" name="addr1" value="${member.addr1 }"><br>
@@ -82,6 +100,12 @@
 							<input type="submit" value="수정" class="button is-info"/>
 							<input type="reset" value="취소" class="button is-info"/>
 							<a href="${path1 }/DelMemberCtrl?num=${member.userid }" class="button is-info">삭제</a>
+=======
+						<td colspan="2">
+							<input type="submit" value="수정" class="button is-info"/>
+							<input type="reset" value="취소" class="button is-info"/>
+							<a href="${path1 }/DelMemberCtrl?num=${member.id }" class="button is-info">삭제</a>
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 							<a href="${path1 }/GetMemberListCtrl" class="button is-info">목록</a>
 						</td>
 					</tr>

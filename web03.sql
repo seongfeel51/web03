@@ -45,7 +45,13 @@ commit;
 select * from member;
 
 
+create table member( id varchar(20) primary key,
+pw varchar(20) not null,
+m_name varchar(20) not null,
+phone varchar(13),
+email varchar(30));
 
+<<<<<<< HEAD
 create table goods(gno number primary key,
 gcategory varchar2(100),
 gname varchar2(100),
@@ -63,4 +69,7 @@ update goods set gcategory=?, gname=?, gprice=?, gcolor=?, amount=?, gcontent=?,
 select * from goods where gno=?
  
 select * from goods where gcategory=? and gno=?
+=======
+insert into member values('admin', '1234', '관리자', '010-1111-1111', 'admin@naver.com');
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 

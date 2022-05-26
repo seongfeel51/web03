@@ -20,6 +20,7 @@ public class EditBoardCtrl extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -30,13 +31,29 @@ public class EditBoardCtrl extends HttpServlet {
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setNickname(nickname);
+=======
+		int no = Integer.parseInt(request.getParameter("no"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String name = request.getParameter("name");
+		
+		BoardVO vo = new BoardVO();
+		vo.setNo(no);
+		vo.setTitle(title);
+		vo.setContent(content);
+		vo.setName(name);
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 		
 		BoardDAO dao = new BoardDAO();
 		int cnt = dao.editBoard(vo);
 		if(cnt>0) {  //글 수정 성공
 			response.sendRedirect("GetBoardListCtrl");
 		} else {  //글 수정 실패
+<<<<<<< HEAD
 			response.sendRedirect("GetBoardCtrl?num="+seq);
+=======
+			response.sendRedirect("GetBoardCtrl?num="+no);
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 		}	
 	}
 

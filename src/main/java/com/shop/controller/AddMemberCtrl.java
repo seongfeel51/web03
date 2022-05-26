@@ -21,6 +21,7 @@ public class AddMemberCtrl extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
 		String userid = request.getParameter("userid");
 		String userpw = request.getParameter("userpw");
 		String email = request.getParameter("email");
@@ -39,6 +40,18 @@ public class AddMemberCtrl extends HttpServlet {
 		vo.setAddr2(addr2);
 		vo.setPostcode(postcode);
 		vo.setBirth(birth);
+=======
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo = new MemberVO();
+		vo.setId(id);
+		vo.setPw(pw);
+		vo.setEmail(email);
+		vo.setPhone(phone);
+>>>>>>> b7d450496dd3d584f766ae0700f436e2f800ada8
 		int cnt = dao.addMember(vo);
 		if(cnt>0) {  //회원가입 성공
 			response.sendRedirect("./member/login.jsp");
