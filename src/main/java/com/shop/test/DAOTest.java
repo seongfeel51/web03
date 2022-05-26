@@ -35,7 +35,7 @@ class DAOTest {
 		dao1 = new BoardDAO();
 		vo1.setTitle("유닛테스트 제목1");
 		vo1.setContent("JUnit Test 입니다.");
-		vo1.setName("admin");
+		vo1.setNickname("admin");
 		
 		vo2 = new MemberVO();
 		dao2 = new MemberDAO();

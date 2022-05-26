@@ -15,7 +15,6 @@ class CryptTest {
 	private String indata = "MTIzNA==";
 	private String encoding;
 	private byte[] decoding;
-	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -33,11 +32,16 @@ class CryptTest {
 	}
 
 	@Test
-	void Cryptest1() {
+	void CrypTest1() {	//암호화
 		encoding = Base64.getEncoder().encodeToString(data.getBytes());
-		String StrDecode = new String(decoding);
 		System.out.println("암호화된 데이터 : "+encoding);
 		fail("암호화 테스트가 실패되었습니다.");
 	}
-
+	@Test
+	void CrypTest2() {  //복호화
+		decoding = Base64.getDecoder().decode(indata);
+		String StrDecode = new String(decoding);
+		System.out.println("복호화된 데이터 : "+StrDecode);
+		fail("복호화 테스트가 실패되었습니다.");
+	}
 }

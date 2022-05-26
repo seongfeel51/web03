@@ -25,10 +25,10 @@ public class BoardDAO {
 			list = new ArrayList<BoardVO>();
 			while(rs.next()) {
 				BoardVO vo = new BoardVO();
-				vo.setNo(rs.getInt("no"));
+				vo.setSeq(rs.getInt("seq"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
-				vo.setName(rs.getString("name"));
+				vo.setNickname(rs.getString("nickname"));
 				vo.setRegdate(rs.getDate("regdate"));
 				vo.setVisited(rs.getInt("visited"));
 				list.add(vo);
@@ -48,21 +48,28 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public BoardVO getBoard(int no) {
+	public BoardVO getBoard(int seq) {
 		BoardVO board = new BoardVO();
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "select * from board where no=?";
+			sql = "select * from board where seq=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, seq);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				board.setNo(rs.getInt("no"));
+				board.setSeq(rs.getInt("seq"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
-				board.setName(rs.getString("name"));
+				board.setNickname(rs.getString("nickname"));
 				board.setRegdate(rs.getDate("regdate"));
 				board.setVisited(rs.getInt("visited"));
+				
+				rs.close();
+				pstmt.close();
+				sql = "update board set visited=visited+1 where seq=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, seq);
+				pstmt.executeUpdate();
 			}
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
@@ -74,7 +81,7 @@ public class BoardDAO {
 			System.out.println("잘못된 요청으로 업무를 처리하지 못했습니다.");
 			e.printStackTrace();
 		} finally {
-			JDBCConnection.close(rs, pstmt, conn);
+			JDBCConnection.close(pstmt, conn);
 		}
 		return board;
 	}
@@ -96,10 +103,10 @@ public class BoardDAO {
 			boardList = new ArrayList<BoardVO>();
 			while(rs.next()) {
 				BoardVO board = new BoardVO();
-				board.setNo(rs.getInt("no"));
+				board.setSeq(rs.getInt("seq"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
-				board.setName(rs.getString("name"));
+				board.setNickname(rs.getString("nickname"));
 				board.setRegdate(rs.getDate("regdate"));
 				board.setVisited(rs.getInt("visited"));
 				boardList.add(board);
@@ -121,11 +128,11 @@ public class BoardDAO {
 	public int addBoard(BoardVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "insert into board values((select nvl(max(no), 0)+1 from board), ?, ?, ?, sysdate, 0)";
+			sql = "insert into board values((select nvl(max(seq), 0)+1 from board), ?, ?, ?, sysdate, 0)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getName());
+			pstmt.setString(3, vo.getNickname());
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
@@ -145,12 +152,12 @@ public class BoardDAO {
 	public int editBoard(BoardVO vo) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "update board set title=?, content=?, nickname=?, regdate=sysdate where no=?";
+			sql = "update board set title=?, content=?, nickname=?, regdate=sysdate where seq=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getName());
-			pstmt.setInt(4, vo.getNo());
+			pstmt.setString(3, vo.getNickname());
+			pstmt.setInt(4, vo.getSeq());
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");
@@ -167,12 +174,12 @@ public class BoardDAO {
 		return cnt;
 	}
 	
-	public int delBoard(BoardVO vo) {
+	public int delBoard(int num) {
 		try {
 			conn = JDBCConnection.getConnection();
-			sql = "delete from board where no=?";
+			sql = "delete from board where seq=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getNo());
+			pstmt.setInt(1, num);
 			cnt = pstmt.executeUpdate();
 		} catch(ClassNotFoundException e) {
 			System.out.println("드라이버 로딩이 실패되었습니다.");

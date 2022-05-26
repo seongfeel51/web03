@@ -1,19 +1,18 @@
 package com.shop.common;
 
 import java.util.Date;
-
 public class BoardVO {
-	private int no;
+	private int seq;
 	private String title;
 	private String content;
-	private String name;
+	private String nickname;
 	private Date regdate;
 	private int visited;
-	public int getNo() {
-		return no;
+	public int getSeq() {
+		return seq;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 	public String getTitle() {
 		return title;
@@ -27,11 +26,11 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getName() {
-		return name;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public Date getRegdate() {
 		return regdate;
@@ -45,5 +44,4 @@ public class BoardVO {
 	public void setVisited(int visited) {
 		this.visited = visited;
 	}
-	
 }

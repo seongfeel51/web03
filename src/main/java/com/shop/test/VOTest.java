@@ -51,9 +51,9 @@ class VOTest {
 
 	@Test
 	void VOtest2() {
-		member.setId("admin");
-		System.out.println("데이터 : "+member.getId());
-		assertEquals(data2, member.getId());
+		member.setUserid("admin");
+		System.out.println("데이터 : "+member.getUserid());
+		assertEquals(data2, member.getUserid());
 		fail("VOTest2 False");
 	}
 }

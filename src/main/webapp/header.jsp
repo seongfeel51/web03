@@ -105,12 +105,14 @@
 		          고객센터
 		        </a>		
 		        <div class="navbar-dropdown">
-		          <a class="navbar-item" href="GetBoardListCtrl">
+		          <a class="navbar-item" href="${path }/GetBoardListCtrl">
 		            공지사항
 		          </a>
-		          <a class="navbar-item">
-		            1:1 문의
-		          </a>
+			      <c:if test="${!empty sid }">
+			          <a href="${path }/mailForm.jsp" class="navbar-item">
+			            1:1 문의
+			          </a>
+			      </c:if>    
 		          <a class="navbar-item">
 		            자주하는 질문 및 답변
 		          </a>
@@ -125,10 +127,10 @@
 		    <div class="navbar-end">
 		      <div class="navbar-item">
 		        <div class="buttons">
-		          <a class="button is-primary">
+		          <a href="${path }/member/agree.jsp" class="button is-primary">
 		            <strong>회원가입</strong>
 		          </a>
-		          <a class="button is-light">
+		          <a href="${path }/member/login.jsp" class="button is-light">
 		            로그인
 		          </a>
 		        </div>
@@ -138,13 +140,13 @@
 		      <!-- 로그인 사용자 -->
 		      <div class="navbar-item">
 		        <div class="buttons">
-		          <a class="button is-primary">
+		          <a href="${path }/myPageCtrl?userid=${sid }" class="button is-primary">
 		            <strong>회원정보수정</strong>
 		          </a>
-		          <a class="button is-light">
+		          <a href="" class="button is-light">
 		            마이페이지
 		          </a>
-		          <a class="button is-light">
+		          <a href="${path }/logOutCtrl" class="button is-light">
 		            로그아웃
 		          </a>
 		        </div>
@@ -154,20 +156,20 @@
 		      <c:if test="${sid=='admin' }">
 		      <div class="navbar-item">
 		        <div class="buttons">
-		          <a class="button is-primary">
+		          <a href="${path }/GetBoardListCtrl" class="button is-primary">
 		            <strong>글 관리</strong>
 		          </a>
-		          <a class="button is-light">
+		          <a href="${path }/GetMemberListCtrl" class="button is-light">
 		            회원관리
+		          </a>
+		          <a href="${path }/adminMemberList.jsp" class="button is-light">
+		            회원관리2
 		          </a>
 		          <a class="button is-light">
 		            제품관리
 		          </a>
 		          <a class="button is-light">
 		            판매관리
-		          </a>
-		          <a class="button is-light">
-		            로그아웃
 		          </a>
 		        </div>
 		      </div>

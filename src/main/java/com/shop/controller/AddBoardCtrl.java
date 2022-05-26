@@ -23,12 +23,12 @@ public class AddBoardCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String name = request.getParameter("name");
+		String nickname = request.getParameter("nickname");
 		
 		BoardVO vo = new BoardVO();
 		vo.setTitle(title);
 		vo.setContent(content);
-		vo.setName(name);
+		vo.setNickname(nickname);
 		
 		BoardDAO dao = new BoardDAO();
 		int cnt = dao.addBoard(vo);
@@ -37,7 +37,5 @@ public class AddBoardCtrl extends HttpServlet {
 		} else {  //글 등록 실패
 			response.sendRedirect("./board/addBoardForm.jsp");
 		}	
-		
 	}
-
 }
