@@ -135,6 +135,7 @@
 		          </a>
 		        </div>
 		      </div>
+		      </div>
 		      </c:if>
 		      <c:if test="${!empty sid }">
 		      <!-- 로그인 사용자 -->
@@ -165,7 +166,7 @@
 		          <a href="${path }/adminMemberList.jsp" class="button is-light">
 		            회원관리2
 		          </a>
-		          <a class="button is-light">
+		          <a href="${path }/GetGoodsListCtrl" class="button is-light">
 		            제품관리
 		          </a>
 		          <a class="button is-light">
@@ -175,7 +176,6 @@
 		      </div>
 		      </c:if>
 		    </div>
+		    </nav>
 		  </div>
-		</nav>
-	</div>
 </header>

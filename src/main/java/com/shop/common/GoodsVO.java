@@ -10,6 +10,8 @@ public class GoodsVO {
 	private String gcolor;
 	private int amount;
 	private String gcontent;
+	private String gimage;
+	private Date regdate;
 	public int getGno() {
 		return gno;
 	}
@@ -64,6 +66,4 @@ public class GoodsVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	private String gimage;
-	private Date regdate;
 }
