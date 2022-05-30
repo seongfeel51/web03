@@ -7,6 +7,7 @@ visited number
 );
 
 
+
 select * from board;
 select * from board where seq=2;
 
@@ -55,7 +56,7 @@ gimage varchar2(1000),  -- 이미지
 regdate date);  -- 등록일
 
 -- 더미 데이터 추가
-insert into goods values ();
+insert into goods values((select nvl(max(gno), 0)+1 from goods), '하이브리드', '상품1', 100, '검정색', 1, '상품설명', '사진', sysdate);
 
 -- 해당 상품 제거
 delete from goods where gno=?
